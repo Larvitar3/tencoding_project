@@ -1,15 +1,22 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-	<%
-		System.out.print("동작");
-	%>
-	<h1>jsp jsp jsp</h1>
+
+	<h2>This is a heading</h2>
+	<p>p 1</p>
+	<p>p 2</p>
+
+	<button>click me</button>
+
+	<script src="/blog/js/test.js"></script>
+
 </body>
 </html>

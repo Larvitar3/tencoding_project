@@ -65,7 +65,7 @@ public class DummyControllerTest {
 		return user;
 	}
 
-	// 회원 가입
+	// 회원 가입 
 	// http://localhost:9090/blog/dummy/signup
 	@PostMapping("/signup")
 	public String signUp(@RequestBody User user) {
@@ -76,7 +76,6 @@ public class DummyControllerTest {
 		userRepository.save(user);
 
 		return "회원가입이 완료되었습니다";
-
 	}
 	
 	// 회원 수정
@@ -122,7 +121,30 @@ public class DummyControllerTest {
 		
 	}
 	
-	
+	@GetMapping("/user/test")
+	public String getTest(String name, int age) {
+		
+		System.out.println("name : " + name);
+		System.out.println("age : " + age);
+		
+		return "";
+	}
+
+	// ( js 회원가입과 연결하여 값을 받아온다. )
+	@PostMapping("/signup2")
+	public String signUp2(String username, String password, String email) {
+
+		User reqUser = new User();
+		
+		reqUser.setUsername(username);
+		reqUser.setPassword(password);
+		reqUser.setEmail(email);
+		reqUser.setRole(RoleType.USER);
+		
+		userRepository.save(reqUser);
+
+		return "회원가입이 완료되었습니다";
+	}
 
 }
 
