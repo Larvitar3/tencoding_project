@@ -9,6 +9,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -102,8 +103,26 @@ public class DummyControllerTest {
 		// 수정한 데이터의 값을 저장하기
 //		userRepository.save(user);
 		
-		return null;
+		return user;
 	}
+	
+	// 회원 삭제하기
+	@DeleteMapping("/user/{id}")
+	public String deleteUser(@PathVariable int id) {
+		
+		// 아이디가 없는 경우를 대비하여 알려준다.
+		try {
+			userRepository.deleteById(id);
+		} catch (Exception e) {
+			return "사용자를 찾을 수 없습니다.";
+		}
+		
+		
+		return  "『 " + id +" 』 삭제되었습니다";
+		
+	}
+	
+	
 
 }
 
