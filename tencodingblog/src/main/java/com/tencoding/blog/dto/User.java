@@ -35,7 +35,7 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에서 연결된 DB넘버링
 	private int id;
 	
-	@Column(nullable = false, length = 30) // 제약 조건
+	@Column(nullable = false, length = 30, unique = true) // 제약 조건
 	private String username;
 	
 	@Column(nullable = false, length = 100)
