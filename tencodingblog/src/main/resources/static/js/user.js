@@ -43,6 +43,8 @@ let index = {
 		});
 	},
 	
+	
+	
 	login: function(){
 		
 		let data = {
@@ -51,14 +53,21 @@ let index = {
 		};
 		
 		$.ajax({
-			
+			type: "POST",
+			url: "/api/user/login",
+			data: JSON.stringify(data),
+			contentType: "application/json; charset=utf-8",
+			dataType: "json",
 		}).done(function(data, textStatus, xhr){
 			alert("로그인 성공");
-		}).fali(function(error){
+
+			console.log("login" + data);
+			location.href = "/";
+			
+		}).fail(function(error){
 			alert("로그인 실패");
 		});
 		
-			console.log("login" + data);
 	}
 }
 
