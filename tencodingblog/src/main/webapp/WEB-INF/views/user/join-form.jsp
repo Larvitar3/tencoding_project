@@ -3,7 +3,7 @@
 <%@ include file="../layout/header.jsp"%>
 
 <div class="container m-5">
-	<form action="/action_page.php">
+	<form>
 		<div class="form-group">
 			<label for="username">UserName :</label> <input value="이춘식이" type="text" class="form-control" placeholder="Enter username" id="username">
 		</div>
