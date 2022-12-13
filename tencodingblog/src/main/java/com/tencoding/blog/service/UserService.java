@@ -3,6 +3,7 @@ package com.tencoding.blog.service;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.tencoding.blog.dto.User;
@@ -22,6 +23,9 @@ public class UserService {
 	
 	@Autowired
 	private UserRepository userRepository;
+	
+	@Autowired
+	private BCryptPasswordEncoder encoder;
 
 	// 작업단위 - 하나의 기능 + 하나의 기능을 묶어서 단위의 기능을 처리
 	// DB 수정 시 롤백 처리 가능
@@ -29,7 +33,13 @@ public class UserService {
 	public int saveUser(User user) {
 		
 		try {
+			// 비밀번호를 넣을 때 여기서 암호화 처리 후 DB에 저장
+			String rawPassword = user.getPassword();
+			String encPassword = encoder.encode(rawPassword);
+			// 암호와 처리 완료
+			user.setPassword(encPassword);
 			user.setRole(RoleType.USER);
+			
 			userRepository.save(user);
 			return 1;
 		} catch (Exception e) {

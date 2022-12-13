@@ -2,9 +2,9 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 <sec:authorize access="isAuthenticated()">
-    Welcome Back, <sec:authentication property="name" />
-    Welcome Back, <sec:authentication property="principal" var="principal" />
+    <sec:authentication property="principal" var="principal" />
 </sec:authorize>
+
 <!DOCTYPE html>
 <html>
 <head>

@@ -1,5 +1,7 @@
 package com.tencoding.blog.repository;
 
+import java.util.Optional;
+
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
@@ -10,6 +12,9 @@ import com.tencoding.blog.dto.User;
 // 굳이 bean으로 등록 요청을 하지 않더라도 등록을 시켜줌 JpaRepository
 @Repository
 public interface UserRepository extends JpaRepository<User, Integer>{
+	
+	// SELECT * FROM user WHERE username = ?1;
+	Optional<User> findByUsername(String username);
 
 //	// 없는 함수는 직접 함수를 만들거나 Spring JPA 네이밍 전략
 //	
