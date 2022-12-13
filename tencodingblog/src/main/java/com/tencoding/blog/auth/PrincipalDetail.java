@@ -13,21 +13,28 @@ import com.tencoding.blog.dto.User;
 // 오브젝트를 시큐리티의 고유한 세션 저장소에 저장을 해준다.
 // (우리가 새롭게 정의한 Object로 처리할 예정)
 
-public class PrincipalDetail implements UserDetails{
+public class PrincipalDetail implements UserDetails {
 
 	private User user;
-	
+
 	public PrincipalDetail(User user) {
 		this.user = user;
 	}
 
-	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
 	@Override
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// 계정 권한을 반환 처리
-		
+
 		Collection<GrantedAuthority> collection = new ArrayList<>();
-		
+
 //		collection.add(new GrantedAuthority() {
 //			@Override
 //			public String getAuthority() {
@@ -35,9 +42,11 @@ public class PrincipalDetail implements UserDetails{
 //				return "ROLE_" + user.getRole();
 //			}
 //		});
-		
-		collection.add(()->{return "ROLE_" + user.getRole();});
-		
+
+		collection.add(() -> {
+			return "ROLE_" + user.getRole();
+		});
+
 		return collection;
 	}
 
@@ -76,5 +85,5 @@ public class PrincipalDetail implements UserDetails{
 		// 계정 활성화 여부 확인 false = 비활성화, true = 활성화
 		return true;
 	}
-	
+
 }
