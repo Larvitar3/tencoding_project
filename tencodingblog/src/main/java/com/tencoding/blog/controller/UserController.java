@@ -14,26 +14,26 @@ public class UserController {
 	@Autowired
 	HttpSession session;
 	
-	@GetMapping("/login-form")
+	@GetMapping("/auth/login_form")
 	public String loginForm() {
 		
-		return "user/login-form";
+		return "user/login_form";
 	}
 	
-	@GetMapping("/join-form")
+	@GetMapping("/auth/join_form")
 	public String joinForm() {
 		
-		return "user/join-form";
+		return "user/join_form";
 	}
 	
-	@GetMapping("/logout") // 따로 정리
-	public String logout(){
-		
-		HttpSession httpSession = session;
-		httpSession.invalidate(); // 세션 삭제 : 로그아웃 처리
-		
-		return "/index";
-	}
+//	@GetMapping("/logout") // 따로 정리
+//	public String logout(){
+//		
+//		HttpSession httpSession = session;
+//		httpSession.invalidate(); // 세션 삭제 : 로그아웃 처리
+//		
+//		return "/index";
+//	}
 	
 	
 }
