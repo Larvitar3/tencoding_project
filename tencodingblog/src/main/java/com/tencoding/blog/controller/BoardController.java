@@ -53,6 +53,20 @@ public class BoardController {
 		return "/board/detail";
 	}
 	
+	@GetMapping("/board/{id}/update_form") //mapping의 변수명과 매개변수의 변수명을 다르게 하고싶은경우 name을 사용한다.
+	public String updateForm(@PathVariable (name = "id")int borderId, Model model) {
+		
+		model.addAttribute("board", boardService.boardDetail(borderId));
+		
+		return "/board/update_form";
+	}
+	
+	
+	
+	
+	
+	
+	
 	
 	
 

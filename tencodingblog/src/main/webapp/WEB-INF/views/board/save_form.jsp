@@ -1,18 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
-	<div class="form-group">
-		<form action="">
+	<form action="">
+		<div class="form-group">
 			<label for="title">title</label> <input type="text" name="title" id="title" class="form-control">
-		</form>
-	</div>
-	<div class="form-group">
-		<form action="">
+		</div>
+		<div class="form-group">
 			<label for="content">contetnt</label>
 			<textarea rows="5" name="content" id="content" class="form-control content"> </textarea>
-		</form>
-		<button type="submit" class="btn btn-primary" id="btn--save">글 쓰기 완료</button>
-	</div>
+			<br />
+			<button type="submit" class="btn btn-primary" id="btn--save">글 쓰기 완료</button>
+		</div>
+	</form>
 	<script>
 		$('.content').summernote(
 				{
