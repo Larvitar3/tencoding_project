@@ -6,4 +6,5 @@ import com.tencoding.blog.dto.Board;
 
 public interface BoardRepository extends JpaRepository<Board, Integer>{
 
+
 }

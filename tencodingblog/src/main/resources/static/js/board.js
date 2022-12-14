@@ -4,6 +4,10 @@ let index = {
 		$("#btn--save").bind("click", () => {
 			this.save();
 		});
+		
+		$("#btn--delete").bind("click", () => {
+			this.deleteById();
+		});
 	},
 	save: function() {
 
@@ -28,9 +32,37 @@ let index = {
 		}).fail(function(error) {
 			alert("저장에 실패했습니다.");
 			console.log(error);
+		});
+	},
+	
+	deleteById: function(){
+		
+		let id = $("#board-id").text();
+		
+		$.ajax({
+			type: "DELETE",
+			url: "/api/board/" + id,			
+		}).done(function(data, textStatus, xhr){
+			console.log(data);
+			if(data.status == "OK") {
+				alert("글 삭제 완료했습니다.");
+				location.href = "/";
+			}
+		}).fail(function(){
+			alert("글 삭제에 실패했습니다.");
+			console.log(error);
 		})
-
+		
 	}
 }
 
 index.init();
+
+
+
+
+
+
+
+
+

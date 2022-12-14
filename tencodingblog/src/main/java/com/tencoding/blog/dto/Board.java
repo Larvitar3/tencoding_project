@@ -44,7 +44,7 @@ public class Board {
 	
 	@ManyToOne(fetch = FetchType.EAGER) // RDBMS 만들기 (FK)
 	@JoinColumn(name = "userId") // 컬럼명 직접 지정
-	private User userId;
+	private User user;
 	
 	// 연관관계의 주인이 아님. * select 할 때 가지고 와야하는 데이터
 	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)
