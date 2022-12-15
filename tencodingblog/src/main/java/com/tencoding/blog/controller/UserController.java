@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
+import com.tencoding.blog.dto.OAuthToken;
+
 @Controller
 //@RequestMapping("/user")
 public class UserController {
@@ -44,7 +46,7 @@ public class UserController {
 	// 데이터 리턴
 	@GetMapping("/auth/kakao/callback")
 	@ResponseBody
-	public String kakaoCallback(@RequestParam String code) {
+	public OAuthToken kakaoCallback(@RequestParam String code) {
 		
 		RestTemplate rt = new RestTemplate();
 		
@@ -64,11 +66,11 @@ public class UserController {
 		
 		// 헤더를 변조해서 실행시키는 메서드는 RestTemplate exchange() 이다
 		// https://kauth.kakao.com/oauth/token
-		ResponseEntity<String> res = rt.exchange("https://kauth.kakao.com/oauth/token", 
-				HttpMethod.POST, reqKakaoToken, String.class);
+		ResponseEntity<OAuthToken> res = rt.exchange("https://kauth.kakao.com/oauth/token", 
+				HttpMethod.POST, reqKakaoToken, OAuthToken.class);
 		
 		
-		return "kakao code \n " + res;
+		return res.getBody();
 	}
 	
 	
