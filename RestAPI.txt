@@ -1,0 +1,18 @@
+
+RestAPI : 
+188c73400922baf0db1a9d0b3dc58279
+
+Redirect URL : 
+http://localhost:9090/auth/kakao/callback
+
+기본 주소 :
+/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code
+
+/oauth/authorize?client_id=188c73400922baf0db1a9d0b3dc58279&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code
+
+https://kauth.kakao.com/oauth/authorize?client_id=188c73400922baf0db1a9d0b3dc58279&redirect_uri=http://localhost:9090/auth/kakao/callback&response_type=code
+
+토큰 코드 :
+https://developers.kakao.com/docs/latest/ko/kakaologin/rest-api#request-token
+
+

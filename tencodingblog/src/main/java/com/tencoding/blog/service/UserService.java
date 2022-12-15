@@ -1,10 +1,10 @@
 package com.tencoding.blog.service;
 
-import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tencoding.blog.dto.User;
 import com.tencoding.blog.model.RoleType;
@@ -49,6 +49,7 @@ public class UserService {
 		return -1;
 	}
 
+	@Transactional
 	public void updateUser(User reqUser) {
 		User userEntity = userRepository.findById(reqUser.getId()).orElseThrow(() ->{
 			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
@@ -60,7 +61,6 @@ public class UserService {
 		userEntity.setUsername(reqUser.getUsername());
 		userEntity.setPassword(encPassword);
 		userEntity.setEmail(reqUser.getEmail());
-		
 		
 	}
 	

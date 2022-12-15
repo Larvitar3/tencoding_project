@@ -11,10 +11,14 @@
 				value="${principal.user.username}">
 		</div>
 		<div class="form-group">
-			<label for="password">Password:</label> <input type="password" class="form-control" placeholder="Enter password" id="password">
+			<label for="password">Password:</label> 
+			<input type="password" class="form-control" placeholder="Enter password" 
+			id="password">
 		</div>
 		<div class="form-group">
-			<label for="email">Email :</label> <input type="email" class="form-control" placeholder="Enter email" id="email" value="${principal.user.email}">
+			<label for="email">Email :</label> 
+			<input type="email" class="form-control" placeholder="Enter email" id="email" 
+			value="${principal.user.email}">
 		</div>
 	</form>
 	<button type="submit" class="btn btn-primary" id="btn--update">회원 정보 수정 완료</button>
