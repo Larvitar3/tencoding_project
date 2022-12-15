@@ -48,6 +48,21 @@ public class UserService {
 		
 		return -1;
 	}
+
+	public void updateUser(User reqUser) {
+		User userEntity = userRepository.findById(reqUser.getId()).orElseThrow(() ->{
+			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+		});
+		
+		String rawPassword = reqUser.getPassword();
+		String encPassword = encoder.encode(rawPassword);
+		
+		userEntity.setUsername(reqUser.getUsername());
+		userEntity.setPassword(encPassword);
+		userEntity.setEmail(reqUser.getEmail());
+		
+		
+	}
 	
 	
 //	public User login(User user) {

@@ -26,6 +26,12 @@ public class UserController {
 		return "user/join_form";
 	}
 	
+	@GetMapping("/user/update_form")
+	public String updateForm() {
+		
+		return "user/update_form";
+	}
+	
 //	@GetMapping("/logout") // 따로 정리
 //	public String logout(){
 //		

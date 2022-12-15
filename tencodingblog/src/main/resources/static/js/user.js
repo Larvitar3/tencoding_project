@@ -9,6 +9,10 @@ let index = {
 		$("#btn--login").bind("click", () =>{
 			this.login();
 		});
+		
+		$("#btn--update").bind("click", () =>{
+			this.update();
+		});
 
 	},
 	
@@ -42,8 +46,7 @@ let index = {
 			console.log(error);
 		});
 	},
-	
-	
+	///////////////save/////////////////////
 	
 	login: function(){
 		
@@ -68,7 +71,36 @@ let index = {
 			alert("로그인 실패");
 		});
 		
+	},
+	/////////////////login//////////////
+	
+	
+	update: function(){
+		let data = {
+			id: $("#id").val(),
+			password: $("#password").val(),
+			email: $("#email").val(),
+			username: $("#username").val()
+		}
+		
+		$.ajax({
+			type: "PUT",
+			url: "/api/user",
+			data: JSON.stringify(data),
+			contentType:"application/json; charset=utf-8",
+			dataType: "json",
+		}).done(function(data, textStatus, xhr){
+			if(data.status == "OK"){
+				alert("회원정보 수정을 완료 하였습니다.");
+				location.href = "/";
+			}
+		}).fail(function(error){
+			alert("실패");
+		})
 	}
+	
+	
+	
 }
 
 index.init();
