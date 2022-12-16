@@ -44,7 +44,7 @@ let index = {
 		
 	}, 
 	deleteById: function () {
-		let id = $("#board-id").text();
+		let id = $("#board-id").val();
 		// 통신 ---> ajax 
 		$.ajax({
 			type: "DELETE", 

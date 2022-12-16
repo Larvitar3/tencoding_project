@@ -36,7 +36,7 @@
 			<textarea rows="1" class="form-control" id="content"></textarea>
 		</div>
 		<button type="button" class="btn btn-info" id="btn-reply-save"
-		style="margin-left: 87%; margin-top: 20px; margin-bottom: 20px;">등록</button>
+		style="margin-left: 87%; margin-bottom: 20px;">등록</button>
 	</div>
 </div>
 <script type="text/javascript" src="../js/board.js"></script>
