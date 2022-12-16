@@ -95,7 +95,7 @@ let index = {
 				location.href = "/";
 			}
 		}).fail(function(error){
-			alert("실패");
+			alert("회원정보 수정을 실패하였습니다. !");
 		})
 	}
 	
