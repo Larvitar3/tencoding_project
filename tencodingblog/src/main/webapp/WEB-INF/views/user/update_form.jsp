@@ -16,7 +16,7 @@
 			<label for="email">Email :</label> <input type="email" class="form-control" placeholder="Enter email" id="email" value="${principal.user.email}">
 		</div>
 	</form>
-	<button type="submit" class="btn btn-primary" id="btn--update">회원 정보 수정 완료</button>
+	<button type="button" class="btn btn-primary" id="btn--update">회원 정보 수정 완료</button>
 </div>
 <script type="text/javascript" src="../js/user.js"></script>
 <%@ include file="../layout/footer.jsp"%>

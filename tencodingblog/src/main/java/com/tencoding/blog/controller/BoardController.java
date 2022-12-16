@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tencoding.blog.dto.Board;
 import com.tencoding.blog.service.BoardService;
@@ -21,21 +22,14 @@ public class BoardController {
 
 	@GetMapping({ "", "/" })
 	public String index(Model model,
-			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageble) {
+			@PageableDefault(size = 1, sort = "id", direction = Direction.DESC) Pageable pageble) {
 
 		Page<Board> boards = boardService.getBoardList(pageble);
-
 		// page.first / true, false
 		// page.last / true, false
-		
-		boards.stream().forEach(item -> {
-			System.out.println(item);
-		});
-
 		model.addAttribute("boards", boards);
 		// jsp 파일에서 model 추상객체를 이용해 컨트롤러에게 내려 준 데이터 접근이 가능
 
-		System.out.println(boards);
 		return "index";
 	}
 
@@ -60,8 +54,6 @@ public class BoardController {
 		
 		return "/board/update_form";
 	}
-	
-	
 	
 	
 	

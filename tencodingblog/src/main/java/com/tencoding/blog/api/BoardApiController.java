@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tencoding.blog.auth.PrincipalDetail;
 import com.tencoding.blog.dto.Board;
+import com.tencoding.blog.dto.Reply;
 import com.tencoding.blog.dto.ResponseDTO;
 import com.tencoding.blog.service.BoardService;
 
@@ -24,11 +25,10 @@ public class BoardApiController {
 	@PostMapping("/api/board")
 	public ResponseDTO<Integer> save(@RequestBody Board board, 
 			@AuthenticationPrincipal PrincipalDetail detail){
-		System.out.println(board);
 		
 		boardService.write(board, detail.getUser());
-		
 		return new ResponseDTO<Integer>(HttpStatus.OK, 1);
+		
 	}
 	
 	@DeleteMapping("/api/board/{id}")
@@ -50,7 +50,14 @@ public class BoardApiController {
 	}
 	
 	
-	
+	@PostMapping("/api/board/{boardId}/reply")
+	public ResponseDTO<Integer> replySave(@PathVariable int boardId, @RequestBody Reply reqReply,
+			@AuthenticationPrincipal PrincipalDetail detail){
+		
+		boardService.writeReply(boardId, reqReply, detail.getUser());
+		
+		return new ResponseDTO<Integer>(HttpStatus.OK,1);
+	}
 	
 	
 	

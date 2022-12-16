@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -21,28 +23,27 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-
 @Entity
 public class Reply {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
-	
+	private int id; 
 	@Column(nullable = false, length = 200)
-	private String content;
-	
-	// board, User 연관관계 처리
+	private String content; 
+	// board 연관 관계 처리
 	@ManyToOne
-	@JoinColumn(name = "boardId") // defult 값일 경우에만 홑따옴표 ★!
-	private Board board;
+	@JoinColumn(name = "boardId")
+	@JsonIgnoreProperties({"replys", "userId"})
+	private Board board; 
 	
-	@ManyToOne
+	// user 연관 관계 처리 
+	@ManyToOne // Reply  <---> User () 
 	@JoinColumn(name = "userId")
-	private User user;
+	@JsonIgnoreProperties({"password", "role", "email", "oauth"})
+	private User user; 
 	
 	@CreationTimestamp
 	private Timestamp createDate;
-	
 	
 }

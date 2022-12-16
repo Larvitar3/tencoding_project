@@ -58,7 +58,7 @@ public class securityConfig extends WebSecurityConfigurerAdapter{
 		
 		http
 		.authorizeHttpRequests()
-			.antMatchers("/auth/**","/","/js/**", "/css/**","/img/**") // 허용하는 주소 입력
+			.antMatchers("/auth/**","/","/js/**", "/css/**","/img/**", "/test/**") // 허용하는 주소 입력
 			.permitAll()
 			.anyRequest()
 			.authenticated()

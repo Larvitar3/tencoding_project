@@ -19,7 +19,7 @@
 			${board.content} 
 			 </textarea>
 			<br />
-			<button type="submit" class="btn btn-primary" id="btn--update">글 수정 완료</button>
+			<button type="button" class="btn btn-primary" id="btn--update">글 수정 완료</button>
 		</div>
 	</form>
 	<script>

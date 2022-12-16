@@ -7,14 +7,19 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tencoding.blog.dto.Board;
+import com.tencoding.blog.dto.Reply;
 import com.tencoding.blog.dto.User;
 import com.tencoding.blog.repository.BoardRepository;
+import com.tencoding.blog.repository.ReplyRepository;
 
 @Service
 public class BoardService {
 
 	@Autowired
 	private BoardRepository boardRepository;
+	
+	@Autowired
+	private ReplyRepository replyRepository;
 
 	public void write(Board board, User user) {
 
@@ -58,4 +63,33 @@ public class BoardService {
 		return 1;
 	}
 
+	public void writeReply(int boardId, Reply reqReply, User user) {
+		
+		// 영속성
+		Board board = boardRepository.findById(boardId).orElseThrow(()->{
+			return new IllegalArgumentException("게시글을 찾을 수 없습니다.");
+		});
+		
+		reqReply.setUser(user);
+		reqReply.setBoard(board);
+		
+		replyRepository.save(reqReply);
+		
+	}
+
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
