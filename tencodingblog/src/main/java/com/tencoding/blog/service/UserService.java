@@ -27,6 +27,7 @@ public class UserService {
 	@Autowired
 	private BCryptPasswordEncoder encoder;
 
+
 	// 작업단위 - 하나의 기능 + 하나의 기능을 묶어서 단위의 기능을 처리
 	// DB 수정 시 롤백 처리 가능
 	@Transactional
@@ -52,7 +53,7 @@ public class UserService {
 	@Transactional
 	public void updateUser(User reqUser) {
 		User userEntity = userRepository.findById(reqUser.getId()).orElseThrow(() ->{
-			return new IllegalArgumentException("해당 유저를 찾을 수 없습니다.");
+			return new IllegalArgumentException("!! 해당 유저를 찾을 수 없습니다.!!");
 		});
 		
 		String rawPassword = reqUser.getPassword();
@@ -63,6 +64,17 @@ public class UserService {
 		userEntity.setEmail(reqUser.getEmail());
 		
 	}
+	
+	
+	@Transactional
+	public User searchUserName(String username) {
+		
+		// orElseThrow는 값이 없을 시 사라지기 때문에 orElseGet을 사용하여 새로운 유저를 생성한다.
+		return userRepository.findByUsername(username).orElseGet(() -> {
+			return new User();
+		});
+	}
+	
 	
 	
 //	public User login(User user) {

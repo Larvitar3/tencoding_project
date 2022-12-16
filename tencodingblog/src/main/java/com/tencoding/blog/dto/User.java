@@ -35,13 +35,13 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY) // 프로젝트에서 연결된 DB넘버링
 	private int id;
 	
-	@Column(nullable = false, length = 30, unique = true) // 제약 조건
+	@Column(nullable = false, unique = true) // 제약 조건
 	private String username;
 	
 	@Column(nullable = false, length = 100)
 	private String password;
 	
-	@Column(nullable = false, length = 50)
+	@Column(nullable = false)
 	private String email;
 	
 //	@ColumnDefault("'user'") // Default 설정 ★ ' 홑따옴표를 넣어 문자열이란 걸 인식시켜줘야함.
@@ -50,6 +50,8 @@ public class User {
 	@Enumerated(EnumType.STRING) // DB에게 문자열 임을 알려주는 것
 	private RoleType role; // 일반, 관리자, 매니저 계정 구분
 	// user : 일반 계정, admin : 관리자, manager : 매니저
+	
+	private String oauth; // kakao, google 로그인
 	
 	
 	@CreationTimestamp //시간 자동 입력
