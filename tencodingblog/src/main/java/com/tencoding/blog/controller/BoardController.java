@@ -55,6 +55,7 @@ public class BoardController {
 		model.addAttribute("startPage", startPage);
 		model.addAttribute("endPage", endPage);
 		model.addAttribute("pageNumbers", pageNumbers);
+		model.addAttribute("q", searchTitle);
 
 		for (int i = startPage; i <= endPage; i++) {
 			pageNumbers.add(i);
