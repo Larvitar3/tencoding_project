@@ -11,7 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.tencoding.blog.dto.Board;
 import com.tencoding.blog.service.BoardService;
@@ -22,12 +22,16 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@GetMapping({ "", "/" })
-	public String index(Model model,
-			@PageableDefault(size = 2, sort = "id", direction = Direction.DESC) Pageable pageble) {
-
-		Page<Board> boards = boardService.getBoardList(pageble);
-
+	// ?page=2 
+	@GetMapping({"", "/", "/board/search"})
+	public String index(@RequestParam(required = false) String q, Model model, 
+			@PageableDefault(size = 3, sort = "id", direction = Direction.DESC) Pageable pageable) {
+		
+		// 검색 요청 값을 받아서 처리 
+		String searchTitle = q == null ? "" : q;
+		System.out.println("SearchTitle : " + searchTitle);
+		//Page<Board> boards = boardService.getBoardList(pageable);
+		Page<Board> boards = boardService.searchBoard(searchTitle.replace("//", ""), pageable);
 		int PAGENATION_BLOCK_COUNT = 2;
 
 		// page.first / true, false
