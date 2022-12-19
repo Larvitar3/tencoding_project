@@ -8,8 +8,7 @@
 	</c:if>
 	<br /> <br /> <br />
 	<div>
-		<input type="hidden" id="board-id" value="${board.id}">
-		글 번호 | <span id=""><i> ${board.id + 100} </i></span>
+		<input type="hidden" id="board-id" value="${board.id}"> 글 번호 | <span id=""><i> ${board.id + 100} </i></span>
 	</div>
 	<div>
 		글 작성자 | <span id=""><i> 『 ${board.user.username} 』 </i></span>
@@ -25,8 +24,11 @@
 		<ul style="list-style: none; margin-top: 20px;">
 			<c:forEach var="reply" items="${board.replys}">
 				<li style="padding: 30px 5px;">
-					<div class="" style="float: left; line-height: 40px;">${reply.content}</div>
-					<button type="button" class="btn btn-danger" style="float: right; margin-right: 30px; height: 40px;">삭제</button>
+					<div class="" style="float: left; line-height: 40px;">${reply.content}</div> 
+					<c:if test="${reply.user.id eq principal.user.id}">
+						<button type="button" class="btn btn-danger" style="float: right; 
+						margin-right: 30px; height: 40px;" onclick="index.replyDelete(${board.id}, ${reply.id})">삭제</button>
+					</c:if>
 					<div class="" style="float: right; line-height: 40px;">작성자 | ${reply.user.username} &nbsp&nbsp&nbsp</div>
 				</li>
 				<div style="height: 1px; background-color: gray; width: 95%; margin-top: 40px;"></div>
@@ -35,8 +37,7 @@
 		<div class="card-body">
 			<textarea rows="1" class="form-control" id="content"></textarea>
 		</div>
-		<button type="button" class="btn btn-info" id="btn-reply-save"
-		style="margin-left: 87%; margin-bottom: 20px;">등록</button>
+		<button type="button" class="btn btn-info" id="btn-reply-save" style="margin-left: 87%; margin-bottom: 20px;">등록</button>
 	</div>
 </div>
 <script type="text/javascript" src="../js/board.js"></script>

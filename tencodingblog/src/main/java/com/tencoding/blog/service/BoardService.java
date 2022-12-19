@@ -63,6 +63,7 @@ public class BoardService {
 		return 1;
 	}
 
+	@Transactional
 	public void writeReply(int boardId, Reply reqReply, User user) {
 		
 		// 영속성
@@ -77,8 +78,31 @@ public class BoardService {
 		
 	}
 
+	@Transactional
+	public void deleteReplyById(int replyId, int reqUserId) {
+
+		
+		System.out.println("reqId " + reqUserId);
+		
+		Reply reply = replyRepository.findById(replyId).orElseThrow(() ->{
+			return new IllegalArgumentException("댓글을 찾을 수 없습니다.");
+		});
+		
+		try {
+			int dbWriter = reply.getUser().getId();
+			int principal = reqUserId;
+			
+			if(dbWriter == principal) {
+				replyRepository.deleteById(replyId);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		
 	
-	
+		
+		// replyRepository.deleteById(replyId);
+	}
 	
 	
 	
