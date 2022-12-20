@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.tencoding.blog.auth.PrincipalDetail;
 import com.tencoding.blog.dto.Board;
@@ -23,14 +24,26 @@ public class BoardApiController {
 	private BoardService boardService;
 	
 	@PostMapping("/api/board")
-	public ResponseDTO<Integer> save(@RequestBody Board board, 
+	public String save(Board board, 
 			@AuthenticationPrincipal PrincipalDetail detail){
 		
 		boardService.write(board, detail.getUser());
-		
-		return new ResponseDTO<Integer>(HttpStatus.OK, 1);
+		return "redirect:/";
 		
 	}
+	
+	/*
+	 * @PostMapping("/api/board") public ModelAndView save(Board board,
+	 * 
+	 * @AuthenticationPrincipal PrincipalDetail detail){
+	 * boardService.write(board, detail.getUser());
+	 * 
+	 * ModelAndView mav = new ModelAndView("redirect:/");
+	 * 
+	 * return mav;
+	 * 
+	 * }
+	 */
 	
 	@DeleteMapping("/api/board/{id}")
 	public ResponseDTO<Integer> deleteById(@PathVariable int id) {

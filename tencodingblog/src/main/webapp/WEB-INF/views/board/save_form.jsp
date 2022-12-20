@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="../layout/header.jsp"%>
 <div class="container">
-	<form action="">
+	<form action="/api/board" method="POST">
+	<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}">
 		<div class="form-group">
 			<label for="title">title</label> <input type="text" name="title" id="title" class="form-control">
 		</div>
@@ -10,8 +11,9 @@
 			<textarea rows="5" name="content" id="content" class="form-control content"> </textarea>
 			<br />
 		</div>
+	<button type="submit" class="btn btn-primary" id="">글 쓰기 완료</button>
 	</form>
-	<button type="button" class="btn btn-primary" id="btn--save">글 쓰기 완료</button>
+<!-- <button type="button" class="btn btn-primary" id="btn--save">글 쓰기 완료</button> -->	
 	<script>
 		$('.content').summernote(
 				{

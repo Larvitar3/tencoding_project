@@ -1,8 +1,8 @@
 let index = {
 	init: function() {
-		$("#btn--save").bind("click", () => {
-			this.save();
-		});
+	//	$("#btn--save").bind("click", () => {
+		//	this.save();
+	//	});
 
 		$("#btn--delete").bind("click", () => {
 			this.deleteById();
@@ -18,7 +18,7 @@ let index = {
 
 
 	},
-	save: function() {
+/**	save: function() {
 
 		let xCheckTitle = XSSCheck($("#title").val());
 		let token = $("meta[name='_csrf']").attr("content");
@@ -56,7 +56,7 @@ let index = {
 
 		});
 
-	},
+	}, */
 
 	deleteById: function() {
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.tencoding.blog.api.BoardApiController;
 import com.tencoding.blog.dto.Board;
 import com.tencoding.blog.service.BoardService;
 
@@ -21,6 +22,7 @@ public class BoardController {
 
 	@Autowired
 	private BoardService boardService;
+
 
 	// ?page=2 
 	@GetMapping({"", "/", "/board/search"})
@@ -67,6 +69,8 @@ public class BoardController {
 	@GetMapping("/board/save_form")
 	public String saveForm() {
 
+		
+		
 		return "/board/save_form";
 	}
 
