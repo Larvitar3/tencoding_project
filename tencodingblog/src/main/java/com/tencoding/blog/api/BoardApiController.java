@@ -27,6 +27,7 @@ public class BoardApiController {
 			@AuthenticationPrincipal PrincipalDetail detail){
 		
 		boardService.write(board, detail.getUser());
+		
 		return new ResponseDTO<Integer>(HttpStatus.OK, 1);
 		
 	}

@@ -32,7 +32,6 @@ public class UserApiController {
 	
 	@PostMapping("/auth/joinProc")
 	public ResponseDTO<Integer> save(@RequestBody User user) {
-		System.out.println("userController : " + user);
 		
 		int result = userService.saveUser(user);
 		

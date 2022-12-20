@@ -9,9 +9,9 @@
 			<label for="content">contetnt</label>
 			<textarea rows="5" name="content" id="content" class="form-control content"> </textarea>
 			<br />
-			<button type="button" class="btn btn-primary" id="btn--save">글 쓰기 완료</button>
 		</div>
 	</form>
+	<button type="button" class="btn btn-primary" id="btn--save">글 쓰기 완료</button>
 	<script>
 		$('.content').summernote(
 				{

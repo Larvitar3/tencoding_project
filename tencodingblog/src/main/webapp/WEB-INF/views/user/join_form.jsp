@@ -14,7 +14,7 @@
 			<label for="email">Email :</label> <input type="email" class="form-control" placeholder="Enter email" id="email">
 		</div>
 	</form>
-		<button type="submit" class="btn btn-primary" id="btn--save">signUp</button>
+		<button type="button" class="btn btn-primary" id="btn--save">signUp</button>
 </div>
 <script type="text/javascript" src="../js/user.js">
 	
