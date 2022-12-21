@@ -38,10 +38,33 @@
 					<c:otherwise>
 						<li class="nav-item"><a class="nav-link" href="/board/save_form">글쓰기</a></li>
 						<li class="nav-item"><a class="nav-link" href="/user/update_form">회원정보 </a></li>
+						
+						<!-- 스토리  -->
+						
+						<li class= "nav-item dropdown" >
+							<a class="dropdown-togle nav-link" data-toggle="dropdown"> STORY  ▶</a>
+						
+						
+							<ul class="dropdown-menu" role="menu">
+								<li class="nav-item">
+									<a href="/story/home " class="dropdown-item"> 
+									<span class="text-info"><i class="fas fa-cloud">Story home 
+									</i></span></a>
+								</li>
+								<li class="nav-item">
+									<a class="dropdown-item" href="/story/upload">
+									<span class="text-info"><i class="fas fa-cloud">Story upload
+									</i></span></a>
+								</li>
+							</ul>
+						</li>
+						
+						<!-- 스토리 end -->
+						
 						<li class="nav-item"><a class="nav-link" href="/m-logout">로그아웃 </a></li>
+						
 					</c:otherwise>
 				</c:choose>
 			</ul>
 		</div>
 	</nav>
-	<br />
