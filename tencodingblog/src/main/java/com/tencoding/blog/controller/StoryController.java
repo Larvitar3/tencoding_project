@@ -52,6 +52,7 @@ public class StoryController {
 	System.out.println("getOriginalFilename : " + file.getOriginalFilename());
 	System.out.println("getResource : " + storyText);
 	System.out.println("getSize : " + file.getSize());*/
+	
 	public String storyImgUpload(RequestFileDto fileDto, @AuthenticationPrincipal PrincipalDetail principalDetail) {
 		
 

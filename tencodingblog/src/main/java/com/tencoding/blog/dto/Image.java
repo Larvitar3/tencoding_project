@@ -38,5 +38,4 @@ public class Image {
 	@CreatedDate
 	private Timestamp timestamp;
 	
-	
 }
